@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Users")
-public class User {
+public class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "user")
-    private List<Address> address;
+    private List<UserAddress> userAddresses;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable (
@@ -55,12 +55,12 @@ public class User {
         this.email = email;
     }
 
-    public List<Address> getAddress() {
-        return address;
+    public List<UserAddress> getAddress() {
+        return userAddresses;
     }
 
-    public void setAddress(List<Address> address) {
-        this.address = address;
+    public void setAddress(List<UserAddress> userAddresses) {
+        this.userAddresses = userAddresses;
     }
 
     public Set<Skill> getSkills() {

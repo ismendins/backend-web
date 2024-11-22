@@ -1,10 +1,10 @@
 package com.example.unifor.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
-public class Address {
+public class PlaceAddress {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,11 +14,7 @@ public class Address {
     private String zipCode;
 
     @ManyToOne
-    @JoinColumn(name = "id_user")
-    private User user;
-
-    @OneToOne
-    @JoinColumn(name="id_place")
+    @JoinColumn(name = "id_place")
     private Place place;
 
     public Long getId() {
@@ -59,14 +55,6 @@ public class Address {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public Place getPlace() {

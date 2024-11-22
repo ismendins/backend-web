@@ -2,12 +2,16 @@ package com.example.unifor.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private LocalDateTime dateTime;
+    private boolean checkin;
 
     @ManyToOne
     @JoinColumn(name = "id_user")
@@ -16,6 +20,8 @@ public class Booking {
     @OneToOne
     @JoinColumn(name = "id_place")
     private Place place;
+
+
 
     public Long getId() {
         return id;
@@ -47,5 +53,21 @@ public class Booking {
 
     public void setPlace(Place place) {
         this.place = place;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public boolean isCheckin() {
+        return checkin;
+    }
+
+    public void setCheckin(boolean checkin) {
+        this.checkin = checkin;
     }
 }

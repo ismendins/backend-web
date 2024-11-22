@@ -1,10 +1,9 @@
 package com.example.unifor.controller;
 
-import com.example.unifor.entity.Address;
+import com.example.unifor.entity.UserAddress;
 import com.example.unifor.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,26 +16,26 @@ public class AddressController {
     private AddressService addressService;
 
     @GetMapping
-    public List<Address> getAllAddress(){
+    public List<UserAddress> getAllAddress(){
         return addressService.findAllAddress();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Address> getAddressById(@PathVariable Long id){
+    public ResponseEntity<UserAddress> getAddressById(@PathVariable Long id){
         return addressService.findAddressById(id)
                 .map(address -> new ResponseEntity<>(address, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
-    public Address createAddress(@RequestBody Address address){
-        return addressService.saveAddress(address);
+    public UserAddress createAddress(@RequestBody UserAddress userAddress){
+        return addressService.saveAddress(userAddress);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Address> updateAddress(@PathVariable Long id, @RequestBody Address updateAddress){
+    public ResponseEntity<UserAddress> updateAddress(@PathVariable Long id, @RequestBody UserAddress updateUserAddress){
         try {
-            return new ResponseEntity<>(addressService.updateAddress(id, updateAddress), HttpStatus.OK);
+            return new ResponseEntity<>(addressService.updateAddress(id, updateUserAddress), HttpStatus.OK);
         } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

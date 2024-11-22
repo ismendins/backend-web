@@ -1,11 +1,8 @@
 package com.example.unifor.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Place {
@@ -13,9 +10,6 @@ public class Place {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nome;
-
-    @OneToOne(mappedBy = "place")
-    private List<Address> address;
 
     @OneToMany(mappedBy = "place")
     private List<Sport> sport;
@@ -28,14 +22,6 @@ public class Place {
         this.sport = sport;
     }
 
-    public List<Address> getAddress() {
-        return address;
-    }
-
-    public void setAddress(List<Address> address) {
-        this.address = address;
-    }
-
     public int getId() {
         return id;
     }
@@ -44,11 +30,11 @@ public class Place {
         this.id = id;
     }
 
-    public String getNome() {
+    public String getName() {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setName(String nome) {
         this.nome = nome;
     }
 }
