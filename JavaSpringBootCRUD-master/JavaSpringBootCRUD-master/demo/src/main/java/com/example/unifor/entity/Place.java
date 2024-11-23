@@ -11,17 +11,6 @@ public class Place {
     private int id;
     private String nome;
 
-    @OneToMany(mappedBy = "place")
-    private List<Sport> sport;
-
-    public List<Sport> getSport() {
-        return sport;
-    }
-
-    public void setSport(List<Sport> sport) {
-        this.sport = sport;
-    }
-
     public int getId() {
         return id;
     }

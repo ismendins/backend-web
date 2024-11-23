@@ -11,7 +11,7 @@ public class Booking {
     private Long id;
     private String nome;
     private LocalDateTime dateTime;
-    private boolean checkin;
+    private boolean possuiCheckin;
 
     @ManyToOne
     @JoinColumn(name = "id_user")
@@ -20,7 +20,6 @@ public class Booking {
     @OneToOne
     @JoinColumn(name = "id_place")
     private Place place;
-
 
 
     public Long getId() {
@@ -63,11 +62,11 @@ public class Booking {
         this.dateTime = dateTime;
     }
 
-    public boolean isCheckin() {
-        return checkin;
+    public boolean isPossuiCheckin() {
+        return possuiCheckin;
     }
 
-    public void setCheckin(boolean checkin) {
-        this.checkin = checkin;
+    public void setPossuiCheckin(boolean possuiCheckin) {
+        this.possuiCheckin = possuiCheckin;
     }
 }

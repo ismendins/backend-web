@@ -3,8 +3,7 @@ package com.example.unifor.entity;
 import jakarta.persistence.*;
 
 @Entity
-public class PlaceAddress {
-
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,8 +13,8 @@ public class PlaceAddress {
     private String zipCode;
 
     @ManyToOne
-    @JoinColumn(name = "id_place")
-    private Place place;
+    @JoinColumn(name = "id_user")
+    private User user;
 
     public Long getId() {
         return id;
@@ -57,11 +56,11 @@ public class PlaceAddress {
         this.zipCode = zipCode;
     }
 
-    public Place getPlace() {
-        return place;
+    public User getUser() {
+        return user;
     }
 
-    public void setPlace(Place place) {
-        this.place = place;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

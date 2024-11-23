@@ -18,7 +18,7 @@ public class User{
     private String email;
 
     @OneToMany(mappedBy = "user")
-    private List<UserAddress> userAddresses;
+    private List<Address> addresses;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable (
@@ -55,12 +55,12 @@ public class User{
         this.email = email;
     }
 
-    public List<UserAddress> getAddress() {
-        return userAddresses;
+    public List<Address> getAddress() {
+        return addresses;
     }
 
-    public void setAddress(List<UserAddress> userAddresses) {
-        this.userAddresses = userAddresses;
+    public void setAddress(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public Set<Skill> getSkills() {
